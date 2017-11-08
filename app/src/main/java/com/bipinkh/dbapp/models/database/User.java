@@ -25,7 +25,7 @@ public class User {
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
 
-    @Generated
+    @Generated(hash = 586692638)
     public User() {
     }
 
@@ -33,7 +33,7 @@ public class User {
         this.id = id;
     }
 
-    @Generated
+    @Generated(hash = 310675012)
     public User(Long id, String first_name, String last_name, Long phone, String address, String email, String gender) {
         this.id = id;
         this.first_name = first_name;

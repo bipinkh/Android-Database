@@ -23,14 +23,17 @@ public class dbapp extends Application {
         initializeDaoSession();
     }
 
+    //initialize daosession
     public void initializeDaoSession(){
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this,"users-db");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
 
+    //get app instance
     public static dbapp getAppInstance()  {   return appinstancce;  }
 
+    //get dao instance
     public DaoSession getDaoSession(){
         if (daoSession==null)   {   initializeDaoSession();   }
         return daoSession;
