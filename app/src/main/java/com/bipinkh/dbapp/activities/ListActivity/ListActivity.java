@@ -31,11 +31,10 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         Log.d("deb","started");
         Toast.makeText(this, "Check", Toast.LENGTH_SHORT).show();
-
         //get daoSession
         daoSession = dbapp.getAppInstance().getDaoSession();
         //initialize variables
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view_users);
         mAdapter = new UserListAdapter(userslist);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         //set recycler view properties
