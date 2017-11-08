@@ -27,17 +27,18 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    //GreenDao and it's generator
+    //butterknife
+    //recycler view
+    
+
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.jakewharton:butterknife:8.8.1'
-    //GreenDao and it's generator
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'org.greenrobot:greendao-generator:3.2.0'
-    //butterknife
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //recycler view
     compile 'com.android.support:recyclerview-v7:25.3.1'
-
     testCompile 'junit:junit:4.12'
-
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
