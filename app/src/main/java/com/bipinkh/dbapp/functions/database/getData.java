@@ -37,6 +37,7 @@ public class getData {
 
     public User getAUser(Long userid){
         User u = daoSession.getUserDao().load(userid);
+        Log.d("deb","user returned : "+u.getEmail());
         return u;
     }
 }

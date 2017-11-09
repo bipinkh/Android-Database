@@ -5,8 +5,15 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
     <string-array name="action">
         <item>Delete</item>
         <item>Edit</item>
     </string-array>
+
+    <string-array name="sorting">
+        <item>Alphabetical</item>
+        <item>Created Time</item>
+    </string-array>
+
 </resources>

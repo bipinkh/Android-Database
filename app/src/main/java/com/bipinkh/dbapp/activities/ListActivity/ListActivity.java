@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
@@ -18,8 +21,6 @@ import com.bipinkh.dbapp.functions.database.getData;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 public class ListActivity extends AppCompatActivity {
@@ -27,6 +28,9 @@ public class ListActivity extends AppCompatActivity {
     private UserListAdapter mAdapter;
     List<User> userslist = new ArrayList<>();
     private RecyclerView recyclerView;
+
+
+    Toolbar toolbar;
 
 
     @Override
@@ -45,9 +49,31 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
+        //toolbar
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
         refreshUsersList();
-        ButterKnife.bind(this);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.add_toolbar_button) {
+            Intent intent = new Intent(ListActivity.this, Edit_Add_Form.class);
+            startActivity(intent);
+            return true;
+        }
+       return super.onOptionsItemSelected(item);
+    }
+
 
     private void refreshUsersList() {
         //get all users list and display
@@ -58,18 +84,11 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
-    @OnClick(R.id.addbutton)
-    public void proceedToAddForm(){
-        Intent intent = new Intent(ListActivity.this, Edit_Add_Form.class);
-        startActivity(intent);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
         refreshUsersList();
     }
-
 
 }
 

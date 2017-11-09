@@ -1,0 +1,19 @@
+<menu
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--<item-->
+    <!--android:id="@+id/sortyby_toolbar_spinner"-->
+    <!--android:title="Sort By"-->
+    <!--app:actionViewClass="android.widget.Spinner"-->
+
+    <!--app:showAsAction="always"-->
+    <!--&gt;-->
+<!--</item>-->
+<item
+    android:id="@+id/add_toolbar_button"
+    android:icon="@drawable/plus_sign"
+    app:showAsAction="ifRoom"
+    android:title="Add New">
+</item>
+</menu>
