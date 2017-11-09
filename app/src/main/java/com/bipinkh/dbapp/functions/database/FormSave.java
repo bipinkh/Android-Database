@@ -20,9 +20,10 @@ public class FormSave {
     }
 
 
-    public Boolean saveUser(String fname, String lname,String phone,String address,String email, String gender){
+    public Boolean saveUser(Long id, String fname, String lname,String phone,String address,String email, String gender){
+        Log.d("deb",String.valueOf(id));
         UserDao userDao = daoSession.getUserDao();
-        User u = new User(null,fname,lname,Long.parseLong(phone),address,email, gender);
+        User u = new User(id,fname,lname,Long.parseLong(phone),address,email, gender);
         userDao.insert(u);
         Log.d("deb","new record insertion successful");
         return Boolean.TRUE;

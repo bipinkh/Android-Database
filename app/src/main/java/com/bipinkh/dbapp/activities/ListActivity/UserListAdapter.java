@@ -3,17 +3,16 @@ package com.bipinkh.dbapp.activities.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.activities.DetailActivity.DetailActivity;
+import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 import com.bipinkh.dbapp.models.database.User;
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 
 /**
@@ -42,7 +41,7 @@ public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
 
     @Override
     //bind each view holder to adapter and pass the data
-    public void onBindViewHolder(CustomViewHolder holder, int position) {
+    public void onBindViewHolder(final CustomViewHolder holder, int position) {
         final User user = userslist.get(position);
         holder.titlename.setText(user.getFirst_name()+" "+user.getLast_name());
         holder.email.setText(user.getEmail());
@@ -58,6 +57,15 @@ public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
                 c.startActivity(i);
                 }
              });
+
+        //listener on option menu
+        holder.moreGear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView moreGear = (ImageView) holder.moreGear;
+                edit_delete_menu.popup(v, user.getId(), moreGear);
+            }
+        });
     }
 
 

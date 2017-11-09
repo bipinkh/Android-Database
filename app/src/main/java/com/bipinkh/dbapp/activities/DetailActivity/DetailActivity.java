@@ -12,6 +12,7 @@ import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.activities.ListActivity.ListActivity;
 import com.bipinkh.dbapp.functions.database.getData;
 import com.bipinkh.dbapp.models.database.User;
+import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,23 +21,36 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 public class DetailActivity extends AppCompatActivity {
 
+    Long userid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
         Intent mIntent = getIntent();
-        Long uid = mIntent.getLongExtra("userid", -1);
-        if (uid == -1){
+        userid = mIntent.getLongExtra("userid", -1);
+        if (userid == -1){
             Intent i = new Intent(DetailActivity.this,ListActivity.class);
             i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         }else{
-            displayContent(uid);
+            displayContent(userid);
         }
+        //check listener on more gear
+        moreOptions();
 
     }
 
+    private void moreOptions() {
+        final ImageView moreGear = (ImageView) findViewById(R.id.displayMoreGear);
+        moreGear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edit_delete_menu.popup(v,userid,moreGear);
+            }
+        });
+    }
 
 
     private void displayContent(Long uid) {
@@ -48,7 +62,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView displayAddress = (TextView) findViewById(R.id.displayAddress);
         TextView displayGender = (TextView) findViewById(R.id.displayGender);
 
-        displayName.setText("Name : " + user.getFirst_name() + " " + user.getLast_name());
+        displayName.setText(user.getFirst_name() + " " + user.getLast_name());
         displayEmail.setText("Email : "+ user.getEmail());
         displayPhone.setText("Phone : "+ String.valueOf(user.getPhone()));
         displayAddress.setText("Address : "+ user.getAddress());

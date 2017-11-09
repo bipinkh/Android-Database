@@ -61,21 +61,13 @@ public class ListActivity extends AppCompatActivity {
     @OnClick(R.id.addbutton)
     public void proceedToAddForm(){
         Intent intent = new Intent(ListActivity.this, Edit_Add_Form.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Form Save Activity activity result
-        if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
-                Toast.makeText(this, "Saved new record",Toast.LENGTH_SHORT).show();
-                refreshUsersList();
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                Toast.makeText(this, "Could not save that entry",Toast.LENGTH_SHORT).show();
-            }
-        }
+    protected void onResume() {
+        super.onResume();
+        refreshUsersList();
     }
 
 

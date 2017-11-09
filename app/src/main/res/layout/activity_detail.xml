@@ -71,6 +71,7 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/more"
         android:background="#0000"
+        android:padding="30dp"
         />
 
 
