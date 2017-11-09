@@ -8,14 +8,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form;
 import com.bipinkh.dbapp.models.database.User;
-import com.bipinkh.dbapp.functions.database.getAllData;
+import com.bipinkh.dbapp.functions.database.getData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +53,7 @@ public class ListActivity extends AppCompatActivity {
         //get all users list and display
         Log.d("deb","refreshing list");
         userslist.clear();
-        userslist.addAll(new getAllData().getUsers());
+        userslist.addAll(new getData().getUsers());
         mAdapter.notifyDataSetChanged();
     }
 

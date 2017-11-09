@@ -14,11 +14,11 @@ import java.util.List;
  * Created by bipin on 11/8/2017.
  */
 
-public class getAllData {
+public class getData {
 
     DaoSession daoSession;
 
-    public getAllData(){
+    public getData(){
         daoSession = dbapp.getAppInstance().getDaoSession();
     }
 
@@ -33,5 +33,10 @@ public class getAllData {
         Log.d("deb","sending all data of users");
 
         return userslist;
+    }
+
+    public User getAUser(Long userid){
+        User u = daoSession.getUserDao().load(userid);
+        return u;
     }
 }

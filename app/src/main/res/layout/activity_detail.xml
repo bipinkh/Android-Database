@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bipinkh.dbapp.activities.DetailActivity.DetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/displayImage"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/person_red"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/displayImage">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/displayName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#222222"
+                android:textAllCaps="true"
+                android:textSize="25sp"
+                android:paddingBottom="20dp"
+                android:gravity="center_horizontal"
+                android:drawableBottom="@color/colorPrimaryDark"/>
+            <TextView
+                android:id="@+id/displayGender"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="17sp"
+                android:paddingStart="20dp"
+                android:layout_below="@+id/displayName"/>
+            <TextView
+                android:id="@+id/displayEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="20dp"
+                android:textSize="17sp"
+                android:layout_below="@id/displayGender"/>
+            <TextView
+                android:id="@+id/displayPhone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="20dp"
+                android:textSize="17sp"
+                android:layout_below="@id/displayEmail"/>
+            <TextView
+                android:id="@+id/displayAddress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="20dp"
+                android:textSize="17sp"
+                android:layout_below="@id/displayPhone"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayMoreGear"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/more"
+        android:background="#0000"
+        />
+
+
+</RelativeLayout>
