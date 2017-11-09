@@ -17,7 +17,7 @@
 
 
     <ImageButton
-        android:id="@+id/fab"
+        android:id="@+id/addbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

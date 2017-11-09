@@ -102,3 +102,4 @@ tools:context="com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form">
     android:paddingRight="20dp"
     android:paddingBottom="20dp"
     />
+</RelativeLayout>
