@@ -12,7 +12,7 @@ public class DaoFilesGenerator {
 
 
     public static void main(String[] args) {
-        Schema schema = new Schema(1, "com.bipinkh.dbapp.models.database"); // package name + db folder
+        Schema schema = new Schema(1, "com.bipinkh.dbapp.models.database"); // package name + db folder location to generate dao files
         schema.enableKeepSectionsByDefault();
         //make tables
         addTables(schema);
@@ -29,9 +29,9 @@ public class DaoFilesGenerator {
         //add other tables here
     }
 
-    // This is use to describe the colums of your table
+    // This is used to describe the colums of your table
     private static Entity addUserEntities(final Schema schema) {
-        Entity user = schema.addEntity("User"); //table
+        Entity user = schema.addEntity("User"); //table name
         user.addIdProperty().primaryKey().autoincrement();
         user.addStringProperty("first_name");
         user.addStringProperty("last_name");

@@ -67,6 +67,10 @@ public class Edit_Add_Form extends AppCompatActivity {
     public void saveForm(){
         Log.d("deb","saving form");
         Long user_id = null;
+        if(first_name == null || last_name == null){
+            Toast.makeText(this,"First Name and Last name are compulsory", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (isEditing){
             new deleteData().deleteUser(edituserid);

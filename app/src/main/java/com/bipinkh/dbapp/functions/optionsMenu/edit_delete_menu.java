@@ -57,7 +57,6 @@ public class edit_delete_menu {
     private static void confirmDeleteUser(final Long user_id, final Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Are you sure you want to delete ?");
-
         builder.setPositiveButton("Yes !", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

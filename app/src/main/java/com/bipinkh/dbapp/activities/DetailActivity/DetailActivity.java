@@ -5,6 +5,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,13 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 public class DetailActivity extends AppCompatActivity {
 
     Long userid;
+    @BindView(R.id.displayImage) ImageView displayImage;
+    @BindView(R.id.displayName) TextView displayName;
+    @BindView(R.id.displayEmail) TextView displayEmail;
+    @BindView(R.id.displayAddress) TextView displayAddress;
+    @BindView(R.id.displayPhone) TextView displayPhone;
+    @BindView(R.id.displayGender) TextView displayGender;
+    @BindView(R.id.displayMoreGear) ImageButton displayMoreGear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,31 +45,25 @@ public class DetailActivity extends AppCompatActivity {
         }else{
             displayContent(userid);
         }
+        ButterKnife.bind(this);
         //check listener on more gear
-        moreOptions();
+        moreOptionsListeners();
 
     }
 
-    private void moreOptions() {
-        final ImageView moreGear = (ImageView) findViewById(R.id.displayMoreGear);
-        moreGear.setOnClickListener(new View.OnClickListener() {
+    //listener to option menu
+    private void moreOptionsListeners() {
+        displayGender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edit_delete_menu.popup(v,userid,moreGear);
+                edit_delete_menu.popup(v,userid,displayGender);
             }
         });
     }
 
-
+    //display contents
     private void displayContent(Long uid) {
         User user = new getData().getAUser(uid);
-
-        TextView displayName = (TextView) findViewById(R.id.displayName);
-        TextView displayEmail = (TextView) findViewById(R.id.displayEmail);
-        TextView displayPhone = (TextView) findViewById(R.id.displayPhone);
-        TextView displayAddress = (TextView) findViewById(R.id.displayAddress);
-        TextView displayGender = (TextView) findViewById(R.id.displayGender);
-
         displayName.setText(user.getFirst_name() + " " + user.getLast_name());
         displayEmail.setText("Email : "+ user.getEmail());
         displayPhone.setText("Phone : "+ String.valueOf(user.getPhone()));
