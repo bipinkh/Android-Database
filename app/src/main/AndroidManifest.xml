@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Add_Edit_Form.Edit_Add_Form"></activity>
+        <activity android:name=".activities.Add_Edit_Form.Edit_Add_Form" />
+        <activity android:name=".activities.DetailActivity.DetailActivity"></activity>
     </application>
 
 </manifest>

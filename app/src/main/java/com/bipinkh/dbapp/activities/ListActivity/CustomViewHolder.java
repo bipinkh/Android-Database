@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import com.bipinkh.dbapp.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by bipin on 11/8/2017.
  */

@@ -30,7 +30,6 @@ dependencies {
     //GreenDao and it's generator
     //butterknife
     //recycler view
-    
 
 
     compile 'com.android.support:appcompat-v7:25.3.1'
