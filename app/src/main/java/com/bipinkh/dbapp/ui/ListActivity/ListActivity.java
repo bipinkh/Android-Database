@@ -16,44 +16,36 @@ import com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form;
 import com.bipinkh.dbapp.models.database.User;
 import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ListActivity extends AppCompatActivity implements ListMvpView {
 
-
-
-public class ListActivity extends AppCompatActivity {
-
-    private UserListAdapter mAdapter;
-    List<User> userslist = new ArrayList<>();
+    ListPresenter mListPresenter;
     private RecyclerView recyclerView;
-
-
     Toolbar toolbar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("deb","activity start");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        //initialize variables
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_users);
-        mAdapter = new UserListAdapter(userslist);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mListPresenter = new ListPresenter();
+        mListPresenter.attachView(this);
 
-        Log.d("deb","setting up recycler view");
-        //set recycler view properties
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        Log.d("deb","set up recycler view");
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_users);
 
         //toolbar
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        refreshUsersList();
+        mListPresenter.setUpUsersRecyclerView(recyclerView);
+        mListPresenter.refreshUsersList();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        mListPresenter.detachView();
+        super.onDestroy();
     }
 
     @Override
@@ -74,20 +66,10 @@ public class ListActivity extends AppCompatActivity {
        return super.onOptionsItemSelected(item);
     }
 
-
-    private void refreshUsersList() {
-        //get all users list and display
-        Log.d("deb","refreshing list");
-        userslist.clear();
-        userslist.addAll(new UserDaoService().getAllUsers());
-        mAdapter.notifyDataSetChanged();
-    }
-
-
     @Override
     protected void onResume() {
         super.onResume();
-        refreshUsersList();
+        mListPresenter.refreshUsersList();
     }
 
 }

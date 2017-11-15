@@ -43,6 +43,8 @@ public class dbapp extends Application {
     //get app instance
     public static dbapp getAppInstance()  {   return appinstance;  }
 
+    public static dbapp getAppContext()  {   return appinstance;  }
+
     //get dao instance
     public DaoSession getDaoSession(){
         if (daoSession==null) {
