@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bipinkh.dbapp.activities.DetailActivity.DetailActivity">
+    tools:context="com.bipinkh.dbapp.ui.DetailActivity.DetailActivity">
 
 
     <ImageView
-        android:id="@+id/displayImage"
+        android:id="@+id/img_ProfilePicture"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:src="@drawable/person_red"/>
@@ -16,14 +16,14 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/displayImage">
+        android:layout_below="@id/img_ProfilePicture">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/displayName"
+                android:id="@+id/text_Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#222222"
@@ -33,33 +33,33 @@
                 android:gravity="center_horizontal"
                 android:drawableBottom="@color/colorPrimaryDark"/>
             <TextView
-                android:id="@+id/displayGender"
+                android:id="@+id/text_Gender"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="17sp"
                 android:paddingStart="20dp"
-                android:layout_below="@+id/displayName"/>
+                android:layout_below="@+id/text_Name"/>
             <TextView
-                android:id="@+id/displayEmail"
+                android:id="@+id/text_Email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingStart="20dp"
                 android:textSize="17sp"
-                android:layout_below="@id/displayGender"/>
+                android:layout_below="@id/text_Gender"/>
             <TextView
-                android:id="@+id/displayPhone"
+                android:id="@+id/text_Phone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingStart="20dp"
                 android:textSize="17sp"
-                android:layout_below="@id/displayEmail"/>
+                android:layout_below="@id/text_Email"/>
             <TextView
-                android:id="@+id/displayAddress"
+                android:id="@+id/text_Address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingStart="20dp"
                 android:textSize="17sp"
-                android:layout_below="@id/displayPhone"/>
+                android:layout_below="@id/text_Phone"/>
         </RelativeLayout>
 
     </ScrollView>
@@ -67,7 +67,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/displayMoreGear"
+        android:id="@+id/img_gear"
         android:layout_alignParentEnd="true"
         android:src="@drawable/more"
         android:background="#0000"

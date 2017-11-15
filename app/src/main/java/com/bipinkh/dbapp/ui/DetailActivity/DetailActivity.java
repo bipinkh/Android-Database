@@ -1,17 +1,15 @@
-package com.bipinkh.dbapp.activities.DetailActivity;
+package com.bipinkh.dbapp.ui.DetailActivity;
 
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bipinkh.dbapp.R;
-import com.bipinkh.dbapp.activities.ListActivity.ListActivity;
+import com.bipinkh.dbapp.ui.ListActivity.ListActivity;
 import com.bipinkh.dbapp.models.database.User;
 import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 import com.bipinkh.dbapp.services.daoServices.UserDaoService;
@@ -28,11 +26,11 @@ public class DetailActivity extends AppCompatActivity {
 
     Long userid;
 
-    @BindView(R.id.displayImage) ImageView displayImage;
-    @BindView(R.id.displayMoreGear) ImageButton displayMoreGear;
-    @BindViews({ R.id.displayName, R.id.displayEmail, R.id.displayAddress,
-            R.id.displayPhone, R.id.displayGender  })
-    List<TextView> displayLists;
+    @BindView(R.id.img_ProfilePicture) ImageView mDisplayImage;
+    @BindView(R.id.img_gear) ImageButton mGear;
+    @BindViews({ R.id.text_Name, R.id.text_Email, R.id.text_Address,
+            R.id.text_Phone, R.id.text_Gender  })
+    List<TextView> mDisplayLists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +56,10 @@ public class DetailActivity extends AppCompatActivity {
     //listener to option menu
     private void moreOptionsListeners() {
 //        final TextView displayGender = (TextView) findViewById(R.id.displayGender);
-        displayMoreGear.setOnClickListener(new View.OnClickListener() {
+        mGear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edit_delete_menu.popup(v,userid,displayMoreGear);
+                edit_delete_menu.popup(v,userid,mGear);
             }
         });
     }
@@ -69,10 +67,10 @@ public class DetailActivity extends AppCompatActivity {
     //display contents
     private void displayContent(Long uid) {
         User user = new UserDaoService().getAUser(uid);
-        displayLists.get(0).setText(user.getFirst_name() + " " + user.getLast_name());
-        displayLists.get(1).setText("Email : "+ user.getEmail());
-        displayLists.get(3).setText("Phone : "+ String.valueOf(user.getPhone()));
-        displayLists.get(2).setText("Address : "+ user.getAddress());
-        displayLists.get(4).setText("Gender : " + user.getGender());
+        mDisplayLists.get(0).setText(user.getFirst_name() + " " + user.getLast_name());
+        mDisplayLists.get(1).setText("Email : "+ user.getEmail());
+        mDisplayLists.get(3).setText("Phone : "+ String.valueOf(user.getPhone()));
+        mDisplayLists.get(2).setText("Address : "+ user.getAddress());
+        mDisplayLists.get(4).setText("Gender : " + user.getGender());
     }
 }

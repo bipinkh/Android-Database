@@ -1,6 +1,5 @@
-package com.bipinkh.dbapp.activities.ListActivity;
+package com.bipinkh.dbapp.ui.ListActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
-import com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form;
+import com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form;
 import com.bipinkh.dbapp.models.database.User;
 import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
@@ -81,7 +79,7 @@ public class ListActivity extends AppCompatActivity {
         //get all users list and display
         Log.d("deb","refreshing list");
         userslist.clear();
-        userslist.addAll(new UserDaoService().getUsers());
+        userslist.addAll(new UserDaoService().getAllUsers());
         mAdapter.notifyDataSetChanged();
     }
 

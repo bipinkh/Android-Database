@@ -6,14 +6,14 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form">
+tools:context="com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form">
 
 
 
 <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/topimage"
+    android:id="@+id/inp_Image"
     android:layout_centerHorizontal="true"
     android:src="@mipmap/ic_launcher_round"
     />
@@ -23,13 +23,13 @@ tools:context="com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form">
     android:layout_height="match_parent"
     android:layout_alignParentBottom="true"
     android:layout_alignParentStart="true"
-    android:layout_below="@+id/topimage">
+    android:layout_below="@+id/inp_Image">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
-            android:id="@+id/first_name"
+            android:id="@+id/inp_FirstName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawableBottom="@android:color/holo_blue_bright"
@@ -37,20 +37,20 @@ tools:context="com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form">
             android:hint="First Name"
             android:textColor="#2133df"/>
         <EditText
-            android:id="@+id/last_name"
+            android:id="@+id/inp_LastName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@+id/first_name"
+            android:layout_below="@+id/inp_FirstName"
             android:drawableBottom="@android:color/holo_blue_bright"
             android:hint="Last Name"
             android:paddingTop="10dp"
             android:textColor="#2133df"/>
 
         <EditText
-            android:id="@+id/phone"
+            android:id="@+id/inp_Phone"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@+id/last_name"
+            android:layout_below="@+id/inp_LastName"
             android:drawableBottom="@android:color/holo_blue_bright"
             android:hint="Phone Number"
             android:paddingTop="10dp"
@@ -58,32 +58,32 @@ tools:context="com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form">
             android:inputType="phone"/>
 
         <EditText
-            android:id="@+id/address"
+            android:id="@+id/inp_Address"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@+id/phone"
+            android:layout_below="@+id/inp_Phone"
             android:paddingTop="10dp"
             android:drawableBottom="@android:color/holo_blue_bright"
             android:hint="Address"
             android:textColor="#2133df"/>
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/inp_Email"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingTop="10dp"
-            android:layout_below="@+id/address"
+            android:layout_below="@+id/inp_Address"
             android:drawableBottom="@android:color/holo_blue_bright"
             android:hint="Email"
             android:textColor="#2133df"/>
 
         <Spinner
-            android:id="@+id/gender"
+            android:id="@+id/inp_Gender"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:spinnerMode="dropdown"
             android:entries="@array/gender"
             android:paddingTop="10dp"
-            android:layout_below="@id/email"
+            android:layout_below="@id/inp_Email"
             android:drawableBottom="@android:color/holo_blue_bright"
             />
 
@@ -92,7 +92,7 @@ tools:context="com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form">
 </ScrollView>
 
 <ImageButton
-    android:id="@+id/savebutton"
+    android:id="@+id/btn_Save"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentEnd="true"

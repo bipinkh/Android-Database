@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/thumbnail"
+        android:id="@+id/img_ListImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
@@ -19,12 +19,12 @@
         android:src="@drawable/person" />
 
     <TextView
-        android:id="@+id/titlename"
+        android:id="@+id/text_ListName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/thumbnail"
+        android:layout_alignTop="@+id/img_ListImage"
         android:layout_alignWithParentIfMissing="true"
         android:layout_marginLeft="72dp"
         android:layout_marginRight="16dp"
@@ -37,10 +37,10 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/text_ListEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titlename"
+        android:layout_below="@+id/text_ListName"
         android:layout_marginLeft="72dp"
         android:layout_marginRight="16dp"
         android:ellipsize="marquee"
@@ -50,18 +50,18 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/userid"
+        android:id="@+id/text_ListId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titlename"
+        android:layout_below="@+id/text_ListName"
         android:layout_alignParentTop="true"
-        android:layout_alignTop="@+id/thumbnail"
+        android:layout_alignTop="@+id/img_ListImage"
         />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/moreGear"
+        android:id="@+id/img_ListGear"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/more"
@@ -72,7 +72,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/thumbnail"
+        android:layout_below="@+id/img_ListImage"
         android:paddingTop="10dp"
         android:background="@android:color/darker_gray"/>
 

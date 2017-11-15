@@ -1,4 +1,4 @@
-package com.bipinkh.dbapp.activities.ListActivity;
+package com.bipinkh.dbapp.ui.ListActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bipinkh.dbapp.R;
-import com.bipinkh.dbapp.activities.DetailActivity.DetailActivity;
+import com.bipinkh.dbapp.ui.DetailActivity.DetailActivity;
 import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 import com.bipinkh.dbapp.models.database.User;
 import java.util.List;
@@ -43,9 +43,9 @@ public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
     //bind each view holder to adapter and pass the data
     public void onBindViewHolder(final CustomViewHolder holder, int position) {
         final User user = userslist.get(position);
-        holder.titlename.setText(user.getFirst_name()+" "+user.getLast_name());
-        holder.email.setText(user.getEmail());
-        holder.userid.setText(String.valueOf(user.getId()));
+        holder.mListName.setText(user.getFirst_name()+" "+user.getLast_name());
+        holder.mListEmail.setText(user.getEmail());
+        holder.mListId.setText(String.valueOf(user.getId()));
 
         //listener for each class
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +59,10 @@ public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
              });
 
         //listener on option menu
-        holder.moreGear.setOnClickListener(new View.OnClickListener() {
+        holder.mListGear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageView moreGear = (ImageView) holder.moreGear;
+                ImageView moreGear = (ImageView) holder.mListGear;
                 edit_delete_menu.popup(v, user.getId(), moreGear);
             }
         });

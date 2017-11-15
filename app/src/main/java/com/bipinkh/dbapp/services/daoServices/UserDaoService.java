@@ -22,8 +22,7 @@ public class UserDaoService {
         daoSession = dbapp.getAppInstance().getDaoSession();
     }
 
-
-    public List<User> getUsers(){
+    public List<User> getAllUsers(){
         List<User> userslist = new ArrayList<>();
         UserDao userDao = daoSession.getUserDao();
         try{

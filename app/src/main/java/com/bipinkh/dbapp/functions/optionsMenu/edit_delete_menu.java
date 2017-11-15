@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
-import com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form;
-import com.bipinkh.dbapp.activities.ListActivity.ListActivity;
+import com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form;
+import com.bipinkh.dbapp.ui.ListActivity.ListActivity;
 import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
