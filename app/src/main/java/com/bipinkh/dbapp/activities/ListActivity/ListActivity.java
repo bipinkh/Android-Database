@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form;
 import com.bipinkh.dbapp.models.database.User;
-import com.bipinkh.dbapp.functions.database.getData;
+import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +81,7 @@ public class ListActivity extends AppCompatActivity {
         //get all users list and display
         Log.d("deb","refreshing list");
         userslist.clear();
-        userslist.addAll(new getData().getUsers());
+        userslist.addAll(new UserDaoService().getUsers());
         mAdapter.notifyDataSetChanged();
     }
 

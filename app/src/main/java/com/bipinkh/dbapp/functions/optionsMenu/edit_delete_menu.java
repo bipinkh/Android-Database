@@ -13,8 +13,7 @@ import android.widget.Toast;
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.activities.Add_Edit_Form.Edit_Add_Form;
 import com.bipinkh.dbapp.activities.ListActivity.ListActivity;
-import com.bipinkh.dbapp.functions.database.deleteData;
-import com.bipinkh.dbapp.models.database.User;
+import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
@@ -60,7 +59,7 @@ public class edit_delete_menu {
         builder.setPositiveButton("Yes !", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                new deleteData().deleteUser(user_id);
+                new UserDaoService().deleteUser(user_id);
                 Intent i = new Intent(context,ListActivity.class);
                 i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(i);

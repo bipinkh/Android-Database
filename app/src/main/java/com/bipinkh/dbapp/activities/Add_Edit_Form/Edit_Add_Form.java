@@ -11,9 +11,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bipinkh.dbapp.activities.ListActivity.ListActivity;
-import com.bipinkh.dbapp.functions.database.*;
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.models.database.User;
+import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,7 +53,7 @@ public class Edit_Add_Form extends AppCompatActivity {
     }
 
     private void populateForm(Long edituserid) {
-        User u = new getData().getAUser(edituserid);
+        User u = new UserDaoService().getAUser(edituserid);
         first_name.setText(u.getFirst_name());
         last_name.setText(u.getLast_name());
         phone.setText(String.valueOf(u.getPhone()));
@@ -74,11 +74,11 @@ public class Edit_Add_Form extends AppCompatActivity {
         }
 
         if (isEditing){
-            new deleteData().deleteUser(edituserid);
+            new UserDaoService().deleteUser(edituserid);
             user_id=edituserid;
         }
 
-        Boolean success = new FormSave().saveUser(
+        Boolean success = new UserDaoService().saveUser(
                             user_id,
                             first_name.getText().toString(),
                             last_name.getText().toString(),

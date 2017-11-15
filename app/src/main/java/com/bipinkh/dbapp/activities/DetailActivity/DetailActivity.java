@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.activities.ListActivity.ListActivity;
-import com.bipinkh.dbapp.functions.database.getData;
 import com.bipinkh.dbapp.models.database.User;
 import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
+import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
 import java.util.List;
 
@@ -68,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
 
     //display contents
     private void displayContent(Long uid) {
-        User user = new getData().getAUser(uid);
+        User user = new UserDaoService().getAUser(uid);
         displayLists.get(0).setText(user.getFirst_name() + " " + user.getLast_name());
         displayLists.get(1).setText("Email : "+ user.getEmail());
         displayLists.get(3).setText("Phone : "+ String.valueOf(user.getPhone()));
