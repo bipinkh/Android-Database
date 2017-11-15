@@ -1,6 +1,5 @@
 package com.bipinkh.dbapp.functions.database;
 
-import android.media.Image;
 import android.util.Log;
 
 import com.bipinkh.dbapp.dbapp;

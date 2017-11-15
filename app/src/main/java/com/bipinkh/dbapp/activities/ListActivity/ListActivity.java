@@ -44,10 +44,12 @@ public class ListActivity extends AppCompatActivity {
         mAdapter = new UserListAdapter(userslist);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
+        Log.d("deb","setting up recycler view");
         //set recycler view properties
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+        Log.d("deb","set up recycler view");
 
         //toolbar
         toolbar = (Toolbar) findViewById(R.id.tool_bar);

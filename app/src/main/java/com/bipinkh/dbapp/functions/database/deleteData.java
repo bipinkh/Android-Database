@@ -5,7 +5,6 @@ import android.util.Log;
 import com.bipinkh.dbapp.dbapp;
 import com.bipinkh.dbapp.models.database.DaoSession;
 import com.bipinkh.dbapp.models.database.User;
-import com.bipinkh.dbapp.models.database.UserDao;
 
 /**
  * Created by bipin on 11/9/2017.

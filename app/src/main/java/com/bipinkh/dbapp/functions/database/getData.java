@@ -30,7 +30,7 @@ public class getData {
         }catch (Exception e){
             Log.d("deb","Exception occured in getting users :: "+e.getMessage());
         }
-        Log.d("deb","sending all data of users");
+        Log.d("deb","Got list of "+ userslist.size()+" users");
 
         return userslist;
     }
