@@ -30,14 +30,13 @@ public class dbapp extends Application {
         Log.d("deb","opening database");
         try {
             DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "users_db.db");
-        Log.d("deb","database helper ready");
         Database db = helper.getWritableDb();
-        Log.d("deb","getting session");
         daoSession = new DaoMaster(db).newSession();
-        Log.d("deb","got daoSession");
         }catch(Exception e){
             Log.d("deb",e.getMessage());
         }
+        Log.d("deb","initiating launcher activity");
+
     }
 
     //get app instance

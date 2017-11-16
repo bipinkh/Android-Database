@@ -4,8 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
 
@@ -22,19 +24,29 @@ public class ListActivity extends AppCompatActivity implements ListMvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        mListPresenter = new ListPresenter(this);
-        mListPresenter.attachView(this);
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_users);
 
         //toolbar
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
+        mListPresenter = new ListPresenter(this);
+        mListPresenter.attachView(this);
         mListPresenter.setUpUsersRecyclerView(recyclerView);
         mListPresenter.refreshUsersList();
+        displayIfAnyInitialMessage();
     }
 
+
+    private void displayIfAnyInitialMessage() {
+        try{
+            String createMessage = this.getIntent().getExtras().getString("message");
+            if (createMessage.length() > 0){
+                Toast.makeText(this,createMessage,Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+        }
+    }
 
     @Override
     protected void onDestroy() {

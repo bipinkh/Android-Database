@@ -20,9 +20,7 @@ import butterknife.OnClick;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-public class Edit_Add_Form extends AppCompatActivity {
-    Boolean isEditing;
-    Long edituserid;
+public class Edit_Add_Form extends AppCompatActivity implements AddEditMvpView{
 
     @BindView(R.id.inp_FirstName) EditText mFirstName;
     @BindView(R.id.inp_LastName) EditText mLastName;
@@ -32,26 +30,71 @@ public class Edit_Add_Form extends AppCompatActivity {
     @BindView(R.id.inp_Gender) Spinner mGender;
     @BindView(R.id.inp_Image) ImageView mImage;
 
+    AddEditPresenter mAddEditPresenter;
+    Boolean isEditing;
+    Long edituserid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__add__form);
+        mAddEditPresenter = new AddEditPresenter(this);
+        mAddEditPresenter.attachView(this);
         ButterKnife.bind(this);
 
-        //check if it's called for editing an user
-        Intent i = getIntent();
-        isEditing =i.getBooleanExtra("editing",Boolean.FALSE);
-        edituserid =i.getLongExtra("userid",0);
-        if (isEditing)
-        {
-            if (edituserid != 0)
-            {   populateForm(edituserid); }
-        }
+        //check if it's called for editing an user or insertion of new user
+        initializeForm();
 
     }
 
-    private void populateForm(Long edituserid) {
+    private void initializeForm() {
+        Intent i = getIntent();
+        isEditing =i.getBooleanExtra("editing",Boolean.FALSE);
+        edituserid =i.getLongExtra("userid",0);
+            if (isEditing)
+            {
+                if (edituserid != 0)
+                {   populateForm(edituserid); }
+            }
+
+        }
+
+
+    @Override
+    protected void onDestroy() {
+        mAddEditPresenter.detachView();
+        super.onDestroy();
+    }
+
+    //listeners
+    @OnClick(R.id.btn_Save)
+    public void saveForm(){
+        Log.d("deb","save form command received");
+        Boolean success =
+                mAddEditPresenter.saveForm(
+                                    isEditing,
+                                    edituserid,
+                                    mFirstName.getText().toString(),
+                                    mLastName.getText().toString(),
+                                    mPhone.getText().toString(),
+                                    mAddress.getText().toString(),
+                                    mEmail.getText().toString(),
+                                    mGender.getSelectedItem().toString()
+                                    );
+        if (success) {
+            Bundle bundle = new Bundle();
+            bundle.putString("message", "Form Save Successful");
+            Intent i = new Intent(this, ListActivity.class).putExtras(bundle);
+            i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        }else{
+            Toast.makeText(this,"Form cannot be saved. " +
+                    "Make sure to enter values for fields", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void populateForm(long edituserid){
         User u = new UserDaoService().getAUser(edituserid);
         mFirstName.setText(u.getFirst_name());
         mLastName.setText(u.getLast_name());
@@ -59,37 +102,5 @@ public class Edit_Add_Form extends AppCompatActivity {
         mEmail.setText(u.getEmail());
         mGender.setPrompt(u.getGender());
         mAddress.setText(u.getAddress());
-    }
-
-    //listeners
-    @OnClick(R.id.btn_Save)
-    public void saveForm(){
-        Log.d("deb","saving form");
-        Long user_id = null;
-        if(mFirstName.getText().toString().length() == 0 ||
-                mLastName.getText().toString().length() == 0){
-            Toast.makeText(this,"First Name and Last name are compulsory", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (isEditing){
-            new UserDaoService().deleteUser(edituserid);
-            user_id=edituserid;
-        }
-
-        Boolean success = new UserDaoService().saveUser(
-                            user_id,
-                            mFirstName.getText().toString(),
-                            mLastName.getText().toString(),
-                            mPhone.getText().toString(),
-                            mAddress.getText().toString(),
-                            mEmail.getText().toString(),
-                            mGender.getSelectedItem().toString()
-                            );
-        Log.d("deb","Form saved status :: "+success);
-
-        Intent i = new Intent(this, ListActivity.class);
-        i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
     }
 }

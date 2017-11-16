@@ -55,10 +55,10 @@ public class UserDaoService {
     }
 
 
-    public Boolean saveUser(Long id, String fname, String lname,String phone,String address,String email, String gender){
+    public Boolean saveUser(Long id, String fname, String lname,Long phone,String address,String email, String gender){
         Log.d("deb",String.valueOf(id));
         UserDao userDao = daoSession.getUserDao();
-        User u = new User(id,fname,lname,Long.parseLong(phone),address,email, gender);
+        User u = new User(id,fname,lname,phone,address,email, gender);
         userDao.insert(u);
         Log.d("deb","new record insertion successful");
         return Boolean.TRUE;

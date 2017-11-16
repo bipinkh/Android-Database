@@ -28,8 +28,8 @@ public class ListPresenter extends BasePresenter<ListMvpView> {
 
     private Context ListActivityContext;
 
-    public ListPresenter(Context c){
-        ListActivityContext = c;
+    public ListPresenter(Context context){
+        ListActivityContext = context;
     }
 
     @Override
@@ -43,6 +43,7 @@ public class ListPresenter extends BasePresenter<ListMvpView> {
     }
 
     public void setUpUsersRecyclerView(RecyclerView recyclerView) {
+        Log.d("deb","setting up recycler view");
         //initialize variables
         mAdapter = new UserListAdapter(userslist);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(dbapp.getAppContext());
@@ -52,6 +53,7 @@ public class ListPresenter extends BasePresenter<ListMvpView> {
     }
 
     public void refreshUsersList() {
+        Log.d("deb","refreshing users list");
         //get all users list and display
         userslist.clear();
         userslist.addAll(new UserDaoService().getAllUsers());
