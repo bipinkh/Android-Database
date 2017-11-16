@@ -9,10 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bipinkh.dbapp.R;
+import com.bipinkh.dbapp.ui.Base.BasePresenter;
 import com.bipinkh.dbapp.ui.DetailActivity.DetailActivity;
 import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 import com.bipinkh.dbapp.models.database.User;
 import java.util.List;
+
+import butterknife.OnClick;
 
 
 /**
@@ -23,16 +26,20 @@ import java.util.List;
 public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
 
     private List<User> userslist;
+    Context parentContext;
+    BasePresenter bPresenter;
 
     //constructor of adapter to initialize the users list
     public UserListAdapter(List<User> userslist) {
         this.userslist = userslist;
+        bPresenter = new BasePresenter();
     }
 
         @Override
     //called right when the adapter is created and is used to initialize the ViewHolder
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+        parentContext = parent.getContext();
+        View itemView = LayoutInflater.from(parentContext)
                 .inflate(R.layout.user_list_row, parent, false);
             return new CustomViewHolder(itemView);
 
@@ -63,7 +70,7 @@ public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
             @Override
             public void onClick(View v) {
                 ImageView moreGear = (ImageView) holder.mListGear;
-                edit_delete_menu.popup(v, user.getId(), moreGear);
+                bPresenter.popUpMenu(v, user.getId(), moreGear);
             }
         });
     }

@@ -50,6 +50,10 @@ public class ListActivity extends AppCompatActivity implements ListMvpView {
         }
     }
 
+    private void callPopUpMenu(){
+
+    }
+
     @Override
     protected void onDestroy() {
         mListPresenter.detachView();

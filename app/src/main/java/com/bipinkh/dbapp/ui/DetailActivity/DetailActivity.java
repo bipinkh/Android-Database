@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity implements DetailMvpView{
         mGear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edit_delete_menu.popup(v,userid,mGear);
+                mDetailPresenter.popUpMenu(v,userid,mGear);
             }
         });
     }
