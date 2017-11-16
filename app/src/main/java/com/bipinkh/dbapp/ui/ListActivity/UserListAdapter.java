@@ -6,12 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.ui.Base.BasePresenter;
 import com.bipinkh.dbapp.ui.DetailActivity.DetailActivity;
-import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 import com.bipinkh.dbapp.models.database.User;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import butterknife.OnClick;
  */
 
 
-public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter <UserListAdapter.CustomViewHolder> {
 
     private List<User> userslist;
     Context parentContext;
@@ -79,6 +80,19 @@ public class UserListAdapter extends RecyclerView.Adapter <CustomViewHolder> {
     @Override
     public int getItemCount() {
         return userslist.size();
+    }
+
+    class CustomViewHolder extends RecyclerView.ViewHolder {
+        public TextView mListName, mListEmail, mListId;
+        public ImageButton mListGear;
+
+        public CustomViewHolder(final View view) {
+            super(view);
+            mListName = (TextView) view.findViewById(R.id.text_ListName);
+            mListEmail = (TextView) view.findViewById(R.id.text_ListEmail);
+            mListId = (TextView) view.findViewById(R.id.text_ListId);
+            mListGear = (ImageButton) view.findViewById(R.id.img_ListGear);
+        }
     }
 
 }

@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bipinkh.dbapp.R;
+import com.bipinkh.dbapp.ui.Base.BaseActivity;
 import com.bipinkh.dbapp.ui.ListActivity.ListActivity;
 import com.bipinkh.dbapp.models.database.User;
-import com.bipinkh.dbapp.functions.optionsMenu.edit_delete_menu;
 import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-public class DetailActivity extends AppCompatActivity implements DetailMvpView{
+public class DetailActivity extends BaseActivity implements DetailMvpView{
 
     Long userid;
 

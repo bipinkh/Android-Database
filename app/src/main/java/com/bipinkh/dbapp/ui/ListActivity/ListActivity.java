@@ -12,9 +12,10 @@ import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form;
+import com.bipinkh.dbapp.ui.Base.BaseActivity;
 
 
-public class ListActivity extends AppCompatActivity implements ListMvpView {
+public class ListActivity extends BaseActivity implements ListMvpView {
 
     ListPresenter mListPresenter;
     private RecyclerView recyclerView;

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bipinkh.dbapp.ui.Base.BaseActivity;
 import com.bipinkh.dbapp.ui.ListActivity.ListActivity;
 import com.bipinkh.dbapp.R;
 import com.bipinkh.dbapp.models.database.User;
@@ -20,7 +21,7 @@ import butterknife.OnClick;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-public class Edit_Add_Form extends AppCompatActivity implements AddEditMvpView{
+public class Edit_Add_Form extends BaseActivity implements AddEditMvpView{
 
     @BindView(R.id.inp_FirstName) EditText mFirstName;
     @BindView(R.id.inp_LastName) EditText mLastName;
