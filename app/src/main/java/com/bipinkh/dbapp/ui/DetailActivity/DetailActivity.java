@@ -19,13 +19,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements DetailMvpView{
 
     Long userid;
 
+    DetailPresenter mDetailPresenter;
     @BindView(R.id.img_ProfilePicture) ImageView mDisplayImage;
     @BindView(R.id.img_gear) ImageButton mGear;
     @BindViews({ R.id.text_Name, R.id.text_Email, R.id.text_Address,
@@ -38,10 +40,15 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
 
+        mDetailPresenter = new DetailPresenter();
+        mDetailPresenter.attachView(this);
+
         Intent mIntent = getIntent();
         userid = mIntent.getLongExtra("userid", -1);
         if (userid == -1){
-            Intent i = new Intent(DetailActivity.this,ListActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("message", "Cannot Open the detail of the user");
+            Intent i = new Intent(DetailActivity.this,ListActivity.class).putExtras(bundle);
             i.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         }else{
@@ -53,9 +60,7 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-    //listener to option menu
     private void moreOptionsListeners() {
-//        final TextView displayGender = (TextView) findViewById(R.id.displayGender);
         mGear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +71,7 @@ public class DetailActivity extends AppCompatActivity {
 
     //display contents
     private void displayContent(Long uid) {
-        User user = new UserDaoService().getAUser(uid);
+        User user = mDetailPresenter.getUser(uid);
         mDisplayLists.get(0).setText(user.getFirst_name() + " " + user.getLast_name());
         mDisplayLists.get(1).setText("Email : "+ user.getEmail());
         mDisplayLists.get(3).setText("Phone : "+ String.valueOf(user.getPhone()));

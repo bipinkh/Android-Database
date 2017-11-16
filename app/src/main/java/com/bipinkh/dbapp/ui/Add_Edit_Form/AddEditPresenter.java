@@ -25,13 +25,9 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 public class AddEditPresenter extends BasePresenter<AddEditMvpView> {
 
-
-
-    Context context_AddEditForm;
     UserDaoService userDaoService;
 
-    public AddEditPresenter(Context context){
-        context_AddEditForm = context;
+    public AddEditPresenter(){
         userDaoService = new UserDaoService();
 
     }

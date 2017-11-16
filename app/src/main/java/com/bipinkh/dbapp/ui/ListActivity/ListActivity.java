@@ -1,5 +1,6 @@
 package com.bipinkh.dbapp.ui.ListActivity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
+import com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form;
 
 
 public class ListActivity extends AppCompatActivity implements ListMvpView {
@@ -30,7 +32,7 @@ public class ListActivity extends AppCompatActivity implements ListMvpView {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        mListPresenter = new ListPresenter(this);
+        mListPresenter = new ListPresenter();
         mListPresenter.attachView(this);
         mListPresenter.setUpUsersRecyclerView(recyclerView);
         mListPresenter.refreshUsersList();
@@ -60,11 +62,17 @@ public class ListActivity extends AppCompatActivity implements ListMvpView {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        mListPresenter.toolbarButtonListener(item);
+        if ( mListPresenter.clickedAddToolbarButton(item))
+        {
+            Intent intent = new Intent(this, Edit_Add_Form.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     protected void onResume() {

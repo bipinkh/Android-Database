@@ -39,7 +39,7 @@ public class Edit_Add_Form extends AppCompatActivity implements AddEditMvpView{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__add__form);
-        mAddEditPresenter = new AddEditPresenter(this);
+        mAddEditPresenter = new AddEditPresenter();
         mAddEditPresenter.attachView(this);
         ButterKnife.bind(this);
 

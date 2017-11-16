@@ -25,11 +25,10 @@ import java.util.List;
 public class ListPresenter extends BasePresenter<ListMvpView> {
     private UserListAdapter mAdapter;
     List<User> userslist = new ArrayList<>();
+    UserDaoService userDaoService;
 
-    private Context ListActivityContext;
-
-    public ListPresenter(Context context){
-        ListActivityContext = context;
+    public ListPresenter(){
+        userDaoService = new UserDaoService();
     }
 
     @Override
@@ -56,16 +55,16 @@ public class ListPresenter extends BasePresenter<ListMvpView> {
         Log.d("deb","refreshing users list");
         //get all users list and display
         userslist.clear();
-        userslist.addAll(new UserDaoService().getAllUsers());
+        userslist.addAll(userDaoService.getAllUsers());
         mAdapter.notifyDataSetChanged();
     }
 
 //add button of toolbar
-    public void toolbarButtonListener(MenuItem item) {
+    public Boolean clickedAddToolbarButton(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.add_toolbar_button) {
-            Intent intent = new Intent(ListActivityContext, Edit_Add_Form.class);
-            ListActivityContext.startActivity(intent);
+            return Boolean.TRUE;
         }
+        return Boolean.FALSE;
     }
 }
