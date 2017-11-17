@@ -11,15 +11,19 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.bipinkh.dbapp.R;
+import com.bipinkh.dbapp.services.daoServices.UserDaoService;
 import com.bipinkh.dbapp.ui.Add_Edit_Form.Edit_Add_Form;
 import com.bipinkh.dbapp.ui.Base.BaseActivity;
+
+import javax.inject.Inject;
 
 
 public class ListActivity extends BaseActivity implements ListMvpView {
 
-    ListPresenter mListPresenter;
+
     private RecyclerView recyclerView;
     Toolbar toolbar;
+    @Inject ListPresenter mListPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,8 @@ public class ListActivity extends BaseActivity implements ListMvpView {
         setContentView(R.layout.activity_list);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_users);
+
+        applicationComponent().inject(this);
 
         //toolbar
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
